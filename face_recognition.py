@@ -173,7 +173,7 @@ class Face_Recognition:
                 id,predict = clf.predict(gray_image[y:y+h, x:x+w])
                 confidence = int((100*(1-predict /300)))
 
-                conn = mysql.connector.connect(host="localhost", username="root", password="Hello@#123", database= "face")
+                conn = mysql.connector.connect(host="localhost", username="root", password="", database= "face")
                 my_cursor = conn.cursor()
 
 
