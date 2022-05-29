@@ -15,13 +15,13 @@ class Student:
         self.root.geometry("1270x650+0+0")
         self.root.title("Face Recognition System")
 
-        conn = mysql.connector.connect(host="localhost", username="root", password="Hello@#123")
+        conn = mysql.connector.connect(host="localhost", username="root", password="")
         my_cursor = conn.cursor()
         query = "CREATE DATABASE IF NOT EXISTS face"
         my_cursor.execute(query)
 
         
-        conn = mysql.connector.connect(host="localhost", username="root", password="Hello@#123", database = 'face')
+        conn = mysql.connector.connect(host="localhost", username="root", password="", database = 'face')
         my_cursor = conn.cursor()
         TableName ="CREATE TABLE IF NOT EXISTS Student_details (Dep VARCHAR(45), course VARCHAR(45), year VARCHAR(45),SEMESTER VARCHAR(45), Student_id VARCHAR(45) PRIMARY KEY,Name VARCHAR(45),Division VARCHAR(45),Roll VARCHAR(45),Gender VARCHAR(45),Dob VARCHAR(45),Email VARCHAR(45),Phone VARCHAR(45),Address VARCHAR(45),Teacher VARCHAR(45),photoSample VARCHAR(45));"
 
@@ -298,7 +298,7 @@ class Student:
             messagebox.showerror("Error", "All Fields are required", parent= self.root)
         else:
             try:
-                conn = mysql.connector.connect(host="localhost", username="root", password="Hello@#123", database= "face")
+                conn = mysql.connector.connect(host="localhost", username="root", password="", database= "face")
                 my_cursor = conn.cursor()
                 my_cursor.execute("insert into Student_details values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", (
                     self.var_dep.get(),
@@ -328,7 +328,7 @@ class Student:
 
     #Fetch data Function
     def fetch_data(self):
-        conn = mysql.connector.connect(host="localhost", username="root", password="Hello@#123", database= "face")
+        conn = mysql.connector.connect(host="localhost", username="root", password="", database= "face")
         my_cursor = conn.cursor()
         my_cursor.execute("select * from Student_details")
         data=my_cursor.fetchall()
@@ -371,7 +371,7 @@ class Student:
             try:
                 Upadate = messagebox.askyesno("Upadte", "DO you want to update this details", parent = self.root)
                 if Upadate > 0:
-                    conn = mysql.connector.connect(host="localhost", username="root", password="Hello@#123", database= "face")
+                    conn = mysql.connector.connect(host="localhost", username="root", password="", database= "face")
                     my_cursor = conn.cursor()
                     my_cursor.execute("update Student_details set Dep=%s, course=%s, Year=%s,  Semester=%s, name = %s,Division=%s, Roll=%s, Gender= %s, Dob = %s, Email=%s, Phone = %s, Address=%s, Teacher=%s, PhotoSample=%s where student_id=%s", (
                                     self.var_dep.get(),
@@ -413,7 +413,7 @@ class Student:
                 delete = messagebox.askyesno("Student Delete Page", "Do you want to delete this student", parent= self.root)
 
                 if delete > 0:
-                    conn = mysql.connector.connect(host="localhost", username="root", password="Hello@#123", database= "face")
+                    conn = mysql.connector.connect(host="localhost", username="root", password="", database= "face")
                     my_cursor = conn.cursor()
                     sql = "delete from Student_details where Student_id=%s"
                     val = (self.var_std_id.get(),)
@@ -457,7 +457,7 @@ class Student:
             messagebox.showerror("Error", "All Fields are required", parent= self.root)
         else:
             try:
-                conn = mysql.connector.connect(host="localhost", username="root", password="Hello@#123", database= "face")
+                conn = mysql.connector.connect(host="localhost", username="root", password="", database= "face")
                 my_cursor = conn.cursor()
                 my_cursor.execute("select * from Student_details")
                 myResult = my_cursor.fetchall()
